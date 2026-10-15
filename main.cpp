@@ -81,14 +81,15 @@ int main()
 					cout << Green << wordPlayer[a] <<Default;
 					t++;
 				}
-				else if (wordPlayer[b] == word[a])
+				else if (wordPlayer[b] != word[a] && wordPlayer[a] != word[a])
 				{
- 					cout << Orange << wordPlayer[a] << Default; // petit problème ici
+ 					
+					cout << Red << wordPlayer[a] << Default;
 					t = 0;
 				}
 				else
 				{
-					cout << Red << wordPlayer[a] << Default;
+					cout << Orange << wordPlayer[a] << Default; // petit problème ici
 					t = 0;
 				}
 				if (t == 5)
