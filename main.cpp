@@ -29,13 +29,11 @@ void AskInt(char wordPlayer[])
 				cout << "Recomancer saisi non valide" << endl;
 				askInt = true;
 			}
-
-
 		}
 
 	}
-
 }
+
 void PlayWordle(const char* word[], const char* p_word, char wordPlayer[], int b, int t, bool test, int turn, bool win)
 {
 	int random = Generator(3);
