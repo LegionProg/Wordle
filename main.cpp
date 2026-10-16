@@ -7,21 +7,48 @@ using namespace std;
 #define Red "\033[31m"
 #define Default "\033[m"
 int Generator(int max);
- 
+void AskInt(char wordPlayer[])
+{
+	bool askInt = true;
+	for (int i = 0; i < 5; i++)
+	{
+		while (true)
+		{
+			if (askInt)
+			{
+				cout << "entrer un mot de 4 caractere en majuscule -> ";
+				cin >> wordPlayer;
+				askInt = false;
+			}
+
+			if (wordPlayer[i] >= 65 && wordPlayer[i] <= 90)
+				break;
+
+			else
+			{
+				cout << "Recomancer saisi non valide" << endl;
+				askInt = true;
+			}
+
+
+		}
+
+	}
+
+}
 void PlayWordle(const char* word[], const char* p_word, char wordPlayer[], int b, int t, bool test, int turn, bool win)
 {
 	int random = Generator(3);
 	p_word = word[random];
-	
+
 	for (int i = 0; i < turn; i++)
 	{
 		cout << "Debug Mot secret -> " << p_word << endl;
-		cout << "entrer un mot de 4 caractere en majuscule -> ";
-		cin >> wordPlayer;
+		AskInt(wordPlayer);
 		b = 0;
 		for (int a = 0; a <= 4; a++)
 		{
-			//b++;
+			b++;
 			if (wordPlayer[a] == p_word[a])
 			{
 				cout << Green << wordPlayer[a] << Default;
@@ -83,6 +110,7 @@ int main()
 
 
 
+
 	bool test = false;
 	int b = 0;
 	int t = 0;
@@ -90,10 +118,10 @@ int main()
 
 	while (true)
 	{
-		PlayWordle(word,p_word, wordPlayer, b, t, test, turn, win);
+		PlayWordle(word, p_word, wordPlayer, b, t, test, turn, win);
 		cout << "rejouer Oui / Non" << endl;
 		cin >> wordPlayer;
-		if (wordPlayer != "Oui" || wordPlayer != "OUI" || wordPlayer !="oui")
+		if (wordPlayer != "Oui" || wordPlayer != "OUI" || wordPlayer != "oui")
 			break;
 	}
 
