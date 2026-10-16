@@ -7,49 +7,12 @@ using namespace std;
 #define Red "\033[31m"
 #define Default "\033[m"
 int Generator(int max);
+ 
 void PlayWordle(const char* word[], const char* p_word, char wordPlayer[], int b, int t, bool test, int turn, bool win)
 {
 	int random = Generator(3);
 	p_word = word[random];
-	/*if (random == 1)
-	{
-
-		word[0] = 'T';
-		word[1] = 'A';
-		word[2] = 'R';
-		word[3] = 'T';
-		word[4] = 'E';
-		word[5] = '\0';// cherche amelioration
-	}
-	else if (random == 2)
-	{
-		word[0] = 'T';
-		word[1] = 'A';
-		word[2] = 'B';
-		word[3] = 'L';
-		word[4] = 'E';
-		word[5] = '\0';
-	}
-	else if (random == 3)
-	{
-		word[0] = 'B';
-		word[1] = 'A';
-		word[2] = 'L';
-		word[3] = 'L';
-		word[4] = 'E';
-		word[5] = '\0';
-	}
-	else
-
-	{
-		word[0] = 'B';
-		word[1] = 'A';
-		word[2] = 'L';
-		word[3] = 'A';
-		word[4] = 'I';
-		word[5] = '\0';
-	}*/
-
+	
 	for (int i = 0; i < turn; i++)
 	{
 		cout << "Debug Mot secret -> " << p_word << endl;
@@ -58,7 +21,7 @@ void PlayWordle(const char* word[], const char* p_word, char wordPlayer[], int b
 		b = 0;
 		for (int a = 0; a <= 4; a++)
 		{
-			b++;
+			//b++;
 			if (wordPlayer[a] == p_word[a])
 			{
 				cout << Green << wordPlayer[a] << Default;
@@ -70,7 +33,6 @@ void PlayWordle(const char* word[], const char* p_word, char wordPlayer[], int b
 				{
 					if (wordPlayer[b] == p_word[a])
 					{
-
 						cout << Orange << wordPlayer[a] << Default; // petit problème ici
 						t = 0;
 						test = true;
