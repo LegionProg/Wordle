@@ -20,17 +20,14 @@ void AskInt(char wordPlayer[])
 				cin >> wordPlayer;
 				askInt = false;
 			}
-
 			if (wordPlayer[i] >= 65 && wordPlayer[i] <= 90)
 				break;
-
 			else
 			{
 				cout << "Recomancer saisi non valide" << endl;
 				askInt = true;
 			}
 		}
-
 	}
 }
 
@@ -38,7 +35,6 @@ void PlayWordle(const char* word[], const char* p_word, char wordPlayer[], int b
 {
 	int random = Generator(3);
 	p_word = word[random];
-
 	for (int i = 0; i < turn; i++)
 	{
 		cout << "Debug Mot secret -> " << p_word << endl;
@@ -72,21 +68,16 @@ void PlayWordle(const char* word[], const char* p_word, char wordPlayer[], int b
 				}
 				test = false;
 			}
-
-
-
 			if (t == 5)
 			{
 				cout << endl << "GG win" << endl;
 				win = true;
 				break;
 			}
-
 		}
 		t = 0;
 		if (win)
 			break;
-
 	}
 	if (!win)
 		cout << endl << "Loose" << endl;
@@ -106,13 +97,9 @@ int main()
 	const char* word[] = { "TABLE", "BALLE", "TARTE","BALAI" };
 	const char* p_word = word[0];
 
-
-
-
 	bool test = false;
 	int b = 0;
 	int t = 0;
-	//const char* word[] = {"TARTE","TABLE","BALAI","BALLE"};
 
 	while (true)
 	{
@@ -122,7 +109,5 @@ int main()
 		if (wordPlayer != "Oui" || wordPlayer != "OUI" || wordPlayer != "oui")
 			break;
 	}
-
-
 	return 0;
 }
