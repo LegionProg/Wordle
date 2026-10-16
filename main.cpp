@@ -7,10 +7,11 @@ using namespace std;
 #define Red "\033[31m"
 #define Default "\033[m"
 int Generator(int max);
-void PlayWordle(char word[], char wordPlayer[],int b, int t, bool test, int turn, bool win)
+void PlayWordle(const char* word[], const char* p_word, char wordPlayer[], int b, int t, bool test, int turn, bool win)
 {
 	int random = Generator(3);
-	if (random == 1)
+	p_word = word[random];
+	/*if (random == 1)
 	{
 
 		word[0] = 'T';
@@ -47,27 +48,27 @@ void PlayWordle(char word[], char wordPlayer[],int b, int t, bool test, int turn
 		word[3] = 'A';
 		word[4] = 'I';
 		word[5] = '\0';
-	}
-	
+	}*/
+
 	for (int i = 0; i < turn; i++)
 	{
-		cout << "Debug Mot secret -> " << word << endl;
+		cout << "Debug Mot secret -> " << p_word << endl;
 		cout << "entrer un mot de 4 caractere en majuscule -> ";
 		cin >> wordPlayer;
 		b = 0;
 		for (int a = 0; a <= 4; a++)
 		{
 			b++;
-			if (wordPlayer[a] == word[a])
+			if (wordPlayer[a] == p_word[a])
 			{
 				cout << Green << wordPlayer[a] << Default;
 				t++;
 			}
-			else if (wordPlayer[a] != word[a])
+			else if (wordPlayer[a] != p_word[a])
 			{
 				for (int b = 0; b < 5; b++)
 				{
-					if (wordPlayer[b] == word[a])
+					if (wordPlayer[b] == p_word[a])
 					{
 
 						cout << Orange << wordPlayer[a] << Default; // petit problème ici
@@ -115,25 +116,25 @@ int main()
 	int turn = 6;
 	bool win = false;
 	char wordPlayer[6];
-	char word[6];
-	char* p_word = &word[6];
+	const char* word[] = { "TABLE", "BALLE", "TARTE","BALAI" };
+	const char* p_word = word[0];
 
-	
+
 
 	bool test = false;
 	int b = 0;
 	int t = 0;
 	//const char* word[] = {"TARTE","TABLE","BALAI","BALLE"};
-	
+
 	while (true)
 	{
-		PlayWordle(word, wordPlayer, b, t, test, turn, win);
+		PlayWordle(word,p_word, wordPlayer, b, t, test, turn, win);
 		cout << "rejouer Oui / Non" << endl;
 		cin >> wordPlayer;
-		if (wordPlayer == "Non" || wordPlayer == "NON")
+		if (wordPlayer != "Oui" || wordPlayer != "OUI" || wordPlayer !="oui")
 			break;
 	}
 
-	
+
 	return 0;
 }
