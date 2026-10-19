@@ -42,7 +42,7 @@ void PlayWordle(const char* word[], const char* p_word, char wordPlayer[], int b
 		b = 0;
 		for (int a = 0; a <= 4; a++)
 		{
-			//b++;
+			b++;
 			if (wordPlayer[a] == p_word[a])
 			{
 				cout << Green << wordPlayer[a] << Default;
